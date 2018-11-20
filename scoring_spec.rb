@@ -120,5 +120,26 @@ RSpec.describe Scoring do
         end
       end
     end
+
+    describe '#score_word' do
+      context 'in Spanish' do
+        language = :spanish
+        word = "hola"
+        subject { described_class.new(language) }
+        it "scores #{word} as 7 point" do
+          expect(subject.score_word(word))
+            .to  eq 7
+        end
+      end
+
+      context 'in English' do
+        word = "hello"
+        subject { described_class.new }
+        it "scores #{word} as 8 point" do
+          expect(subject.score_word(word))
+            .to  eq 8
+        end
+      end
+    end
   end
 end

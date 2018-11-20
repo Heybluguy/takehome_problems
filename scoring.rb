@@ -10,8 +10,11 @@ class Scoring
     @score_key.each {|key, value| return key if value.include?(letter.upcase)}
   end
 
+  def score_word(word)
+    word.split(//).map {|letter| score_letter(letter)}.sum
+  end
+
   def handle_language(language)
-    return SPANISH if language == :spanish
-    language
+    language == :spanish ? SPANISH : language
   end
 end
