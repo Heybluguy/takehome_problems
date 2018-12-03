@@ -7,7 +7,8 @@ class Scoring
   end
 
   def score_letter(letter)
-    @score_key.each {|key, value| return key if value.include?(letter.upcase)}
+    # @score_key.each {|key, value| return key if value.include?(letter.upcase)}
+    @score_key[letter.upcase]
   end
 
   def score_word(word)
