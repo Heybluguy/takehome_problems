@@ -14,7 +14,7 @@ class Scoring
   def score_letter(letter)
     return @score[letter.upcase] if defined? @score[letter.upcase]
     @score = {}
-    @score_key.each {|letters, points| letters.each {|letter| @score[letter]= points}}
+    @score_key.each {|letters, points| letters.each {|letter| @score[letter] = points}}
     @score[letter.upcase]
   end
 
