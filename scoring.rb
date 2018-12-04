@@ -6,16 +6,19 @@ class Scoring
     @score_key = handle_language(language)
   end
 
+    def handle_language(language)
+      return SPANISH if language == :spanish
+      language
+    end
+
   def score_letter(letter)
-    @score_key.each {|key, value| return value if key.include?(key.upcase)}
-    # @score_key[letter]
+    return @score[letter.upcase] if defined? @score[letter.upcase]
+    @score = {}
+    @score_key.each {|letters, points| letters.each {|letter| @score[letter]= points}}
+    @score[letter.upcase]
   end
 
   def score_word(word)
-    word.split(//).map {|letter| score_letter(letter)}.sum
-  end
-
-  def handle_language(language)
-    language == :spanish ? SPANISH : language
+    word.split(//).map { |letter| score_letter(letter)}.sum
   end
 end
